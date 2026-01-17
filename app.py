@@ -275,7 +275,7 @@ with aba_geral:
     ]
     main_cols = [c for c in main_cols if c in df_f.columns]
 
-    with st.expander("📊 Estatísticas descritivas (df.describe)", expanded=True):
+    with st.expander("📊 Estatísticas descritivas", expanded=True):
         st.dataframe(df_f[main_cols].describe().T)
 
     # with st.expander("🧹 Qualidade dos dados (nulos por coluna)"):
@@ -384,7 +384,7 @@ with aba_q2:
             else:
                 st.write("**Diferença de médias:** -")
 
-            with st.expander("📋 Estatísticas por grupo (count/mean/std/min/median/max)", expanded=True):
+            with st.expander("📋 Estatísticas por grupo", expanded=True):
                 st.dataframe(group_stats.style.format({"mean": "{:.2f}", "std": "{:.2f}", "min": "{:.2f}", "median": "{:.2f}", "max": "{:.2f}"}))
 
 
@@ -449,13 +449,13 @@ with aba_q3:
         c2.metric("Média (Com chuva)", f"{mean_rain:.2f}" if np.isfinite(mean_rain) else "-")
         c3.metric("Diferença (Com − Sem)", f"{diff:.2f}" if np.isfinite(diff) else "-")
 
-        with st.expander("📋 Estatísticas por condição (count/mean/std)", expanded=False):
+        with st.expander("📋 Estatísticas por condição", expanded=False):
             st.dataframe(stats_rain.style.format({"mean": "{:.2f}", "std": "{:.2f}"}))
 
-        with st.expander("📌 Correlação Precipitação x Consumo (Pearson)", expanded=False):
-            st.write(f"**N (pares válidos):** {n_prec}")
-            st.write(f"**r:** {r_prec:.4f}" if np.isfinite(r_prec) else "**r:** -")
-            st.write(f"**p-value:** {p_prec:.4g}" if np.isfinite(p_prec) else "**p-value:** -")
+        # with st.expander("📌 Correlação Precipitação x Consumo (Pearson)", expanded=False):
+        #     st.write(f"**N (pares válidos):** {n_prec}")
+        #     st.write(f"**r:** {r_prec:.4f}" if np.isfinite(r_prec) else "**r:** -")
+        #     st.write(f"**p-value:** {p_prec:.4g}" if np.isfinite(p_prec) else "**p-value:** -")
 
         with st.expander("🔎 Dados usados no scatter"):
             st.dataframe(data_xy.rename(columns={"x": "Precipitacao (mm)", "y": "Consumo (L)"}))
