@@ -506,12 +506,12 @@ with aba_q4:
             st.markdown("#### Top 3 meses")
             st.dataframe(top3.style.format({"Consumo médio (L)": "{:.2f}"}))
 
-            st.markdown("#### Bottom 3 meses")
+            st.markdown("#### Menores 3 meses")
             st.dataframe(bottom3.style.format({"Consumo médio (L)": "{:.2f}"}))
 
-        with st.expander("📋 Tabela completa (média por mês)"):
-            st.dataframe(monthly_mean.to_frame("Consumo médio (L)").style.format("{:.2f}"))
+        # with st.expander("📋 Tabela completa (média por mês)"):
+        #     st.dataframe(monthly_mean.to_frame("Consumo médio (L)").style.format("{:.2f}"))
 
-        with st.expander("📌 Contagem de dias por mês"):
-            counts = df_q4["Mes"].value_counts().reindex(range(1, 13)).fillna(0).astype(int)
-            st.dataframe(counts.to_frame("dias"))
+        # with st.expander("📌 Contagem de dias por mês"):
+        #     counts = df_q4["Mes"].value_counts().reindex(range(1, 13)).fillna(0).astype(int)
+        #     st.dataframe(counts.to_frame("dias"))
